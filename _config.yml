@@ -18,8 +18,7 @@ title: 一位图书管理猿  # 侧边栏与浏览器标签显示的网站主标
 
 tagline: 众鸟欣有托，吾亦爱吾庐  # 显示在主标题下方的“签名/副标题”
 
-description: >- # used by seo meta and the atom feed
-  一位图书管理猿的个人博客
+description: "一位图书管理猿的个人博客"
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.

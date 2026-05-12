@@ -1,0 +1,27 @@
+---
+---
+
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+ .bundle
+{%- endif -%}
+';
+
+/* append your custom style below */
+
+/* 侧栏：中文标题与签名略增字距与行高，阅读更舒适 */
+#sidebar .site-title {
+  letter-spacing: 0.04em;
+}
+
+#sidebar .site-subtitle {
+  letter-spacing: 0.05em;
+  line-height: 1.65;
+  font-weight: 500;
+}
+
+/* 头像裁切：非正方形图片时减少拉伸感 */
+#sidebar #avatar img {
+  object-fit: cover;
+}
