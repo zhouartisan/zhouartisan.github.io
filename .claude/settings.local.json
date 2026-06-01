@@ -21,7 +21,8 @@
       "Bash(gem contents *)",
       "Bash(gem list *)",
       "Bash(where ruby *)",
-      "Bash(where gem *)"
+      "Bash(where gem *)",
+      "Bash(gh run *)"
     ]
   }
 }
