@@ -8,20 +8,486 @@
 {%- endif -%}
 ';
 
-/* append your custom style below */
+/* ============================================================
+   极简中文阅读风格 — 参考 lixiaolai.com
+   所有覆盖均在 Chirpy 主题加载之后，不修改主题源文件
+   ============================================================ */
 
-/* 侧栏：中文标题与签名略增字距与行高，阅读更舒适 */
-#sidebar .site-title {
-  letter-spacing: 0.04em;
+/* ---- 1. 颜色方案覆盖 ---- */
+
+/* 亮色模式 */
+:root {
+  --body-bg: #ffffff;
+  --body-bg-color: #ffffff;
+  --main-bg: #ffffff;
+  --sidebar-bg: #f6f8fa;
+  --card-bg: #ffffff;
+  --card-border-color: #e8e8e8;
+  --heading-color: #1f2328;
+  --text-color: #24292f;
+  --text-muted-color: #656d76;
+  --link-color: #0969da;
+  --link-hover-color: #0550ae;
+  --border-color: #e8e8e8;
+  --btn-bg: #f6f8fa;
+  --btn-hover-bg: #eaeef2;
+  --highlight-bg: #fff8c5;
+  --code-bg: #f6f8fa;
+  --table-header-bg: #f6f8fa;
+  --shadow: none;
+  --card-shadow: none;
 }
 
-#sidebar .site-subtitle {
-  letter-spacing: 0.05em;
-  line-height: 1.65;
-  font-weight: 500;
+/* 暗色模式 — GitHub Dark 风格 */
+[data-theme="dark"] {
+  --body-bg: #0d1117;
+  --body-bg-color: #0d1117;
+  --main-bg: #0d1117;
+  --sidebar-bg: #161b22;
+  --card-bg: #161b22;
+  --card-border-color: #30363d;
+  --heading-color: #e6edf3;
+  --text-color: #e6edf3;
+  --text-muted-color: #8b949e;
+  --link-color: #58a6ff;
+  --link-hover-color: #79c0ff;
+  --border-color: #30363d;
+  --btn-bg: #21262d;
+  --btn-hover-bg: #30363d;
+  --highlight-bg: #3b2e00;
+  --code-bg: #161b22;
+  --table-header-bg: #161b22;
+  --shadow: none;
+  --card-shadow: none;
 }
 
-/* 头像裁切：非正方形图片时减少拉伸感 */
-#sidebar #avatar img {
-  object-fit: cover;
+/* 系统偏好暗色模式兜底 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --body-bg: #0d1117;
+    --body-bg-color: #0d1117;
+    --main-bg: #0d1117;
+    --sidebar-bg: #161b22;
+    --card-bg: #161b22;
+    --card-border-color: #30363d;
+    --heading-color: #e6edf3;
+    --text-color: #e6edf3;
+    --text-muted-color: #8b949e;
+    --link-color: #58a6ff;
+    --link-hover-color: #79c0ff;
+    --border-color: #30363d;
+    --btn-bg: #21262d;
+    --btn-hover-bg: #30363d;
+    --highlight-bg: #3b2e00;
+    --code-bg: #161b22;
+    --table-header-bg: #161b22;
+    --shadow: none;
+    --card-shadow: none;
+  }
+}
+
+/* ---- 2. 全局排版覆盖 ---- */
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- 3. 侧栏美化 ---- */
+
+#sidebar {
+  background: var(--sidebar-bg);
+
+  .site-title {
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+
+  .site-subtitle {
+    letter-spacing: 0.05em;
+    line-height: 1.65;
+    font-weight: 400;
+    color: var(--text-muted-color);
+  }
+
+  #avatar img {
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  /* 社交图标简化 */
+  .contact-list .contact-icon {
+    opacity: 0.7;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+/* ---- 4. 导航标签栏简化 ---- */
+
+#sidebar .sidebar-bottom {
+  .nav-tabs {
+    border: none;
+
+    .nav-item .nav-link {
+      border: none;
+      color: var(--text-muted-color);
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+      padding: 0.4rem 0.8rem;
+      transition: color 0.2s;
+
+      &:hover,
+      &.active {
+        color: var(--text-color);
+        background: transparent;
+        border: none;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+/* ---- 5. 首页文章列表卡片 ---- */
+
+#post-list {
+  .post-preview {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 0;
+    transition: none;
+
+    &:hover {
+      box-shadow: none;
+      transform: none;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .post-title {
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      line-height: 1.5;
+    }
+
+    .post-meta {
+      color: var(--text-muted-color);
+      font-size: 0.85rem;
+    }
+
+    .post-desc {
+      color: var(--text-muted-color);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* 分类与标签徽章极简化 */
+    .post-category,
+    .post-tag {
+      font-size: 0.78rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      background: var(--btn-bg);
+      color: var(--text-muted-color);
+      border: none;
+    }
+  }
+}
+
+/* ---- 6. 文章阅读页 ---- */
+
+#post-wrapper,
+#core-wrapper {
+  /* 文章正文排版 */
+  .post-content,
+  #post-content {
+    max-width: 48rem;
+    font-size: 16px;
+    line-height: 1.75;
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+
+    /* 标题层级 */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--heading-color);
+    }
+
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.45rem; }
+    h3 { font-size: 1.25rem; }
+
+    /* 列表间距 */
+    ul, ol {
+      margin-bottom: 1.5rem;
+
+      li {
+        margin-bottom: 0.5rem;
+        line-height: 1.75;
+      }
+    }
+
+    /* 引用块 */
+    blockquote {
+      border-left: 3px solid var(--border-color);
+      padding-left: 1.2rem;
+      color: var(--text-muted-color);
+      margin: 1.5rem 0;
+      font-style: normal;
+    }
+
+    /* 链接 */
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+
+      &:hover {
+        border-bottom-color: var(--link-color);
+      }
+    }
+
+    /* 图片 */
+    img {
+      max-width: 100%;
+      border-radius: 4px;
+      margin: 1.5rem 0;
+    }
+
+    /* 表格 */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+
+      th, td {
+        padding: 0.6rem 1rem;
+        border: 1px solid var(--border-color);
+      }
+
+      th {
+        background: var(--table-header-bg);
+        font-weight: 600;
+      }
+    }
+
+    /* 分隔线 */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border-color);
+      margin: 2rem 0;
+    }
+  }
+}
+
+/* ---- 7. 代码块 ---- */
+
+pre,
+.highlight pre,
+pre.highlight {
+  background: #161b22 !important;
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  border: none;
+  overflow-x: auto;
+
+  code {
+    color: #e6edf3;
+    background: transparent;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+      "Microsoft YaHei", monospace;
+  }
+}
+
+/* 行内代码 */
+:not(pre) > code {
+  background: var(--code-bg);
+  color: var(--text-color);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.88em;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+    "Microsoft YaHei", monospace;
+}
+
+/* ---- 8. TOC 目录美化 ---- */
+
+#toc-wrapper {
+  border: none;
+  background: transparent;
+  padding-left: 0;
+
+  .toc-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted-color);
+    letter-spacing: 0.03em;
+    text-transform: none;
+  }
+
+  .toc-list {
+    font-size: 0.82rem;
+    line-height: 1.7;
+
+    a {
+      color: var(--text-muted-color);
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover,
+      &.active {
+        color: var(--text-color);
+      }
+    }
+
+    /* TOC 缩进线条极简化 */
+    .toc-h2 { padding-left: 0; }
+    .toc-h3 { padding-left: 1rem; }
+    .toc-h4 { padding-left: 2rem; }
+  }
+}
+
+/* ---- 9. 标签与分类页面 ---- */
+
+.tag-category-list {
+  .tag, .category {
+    a {
+      color: var(--text-muted-color);
+      transition: color 0.2s;
+
+      &:hover {
+        color: var(--link-color);
+      }
+    }
+  }
+}
+
+/* 标签云 */
+.tag-cloud {
+  a {
+    color: var(--text-muted-color) !important;
+    border: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--link-color) !important;
+    }
+  }
+}
+
+/* ---- 10. 分页器简化 ---- */
+
+.pagination {
+  .page-item .page-link {
+    border: none;
+    color: var(--text-muted-color);
+    background: transparent;
+    border-radius: 4px;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--text-color);
+      background: var(--btn-bg);
+    }
+
+    &.active,
+    &.current {
+      color: var(--text-color);
+      background: var(--btn-bg);
+      font-weight: 600;
+    }
+  }
+}
+
+/* ---- 11. 页脚简化 ---- */
+
+#footer {
+  color: var(--text-muted-color);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+  margin-top: 3rem;
+
+  a {
+    color: var(--text-muted-color);
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--text-color);
+    }
+  }
+}
+
+/* ---- 12. 回到顶部按钮 ---- */
+
+#back-to-top {
+  background: var(--btn-bg);
+  color: var(--text-muted-color);
+  border: none;
+  box-shadow: none;
+  border-radius: 4px;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 1;
+    background: var(--btn-hover-bg);
+  }
+}
+
+/* ---- 13. 搜索框简化 ---- */
+
+#search-input {
+  background: var(--btn-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  padding: 0.5rem 0.8rem;
+
+  &:focus {
+    outline: none;
+    border-color: var(--link-color);
+  }
+}
+
+/* ---- 14. 提示框/Callout 简化 ---- */
+
+.prompt-tip,
+.prompt-info,
+.prompt-warning,
+.prompt-danger {
+  border-radius: 4px;
+  border-left-width: 3px;
+}
+
+/* ---- 15. 响应式微调 ---- */
+
+@media (max-width: 768px) {
+  #post-wrapper .post-content,
+  #core-wrapper #post-content {
+    font-size: 15px;
+    line-height: 1.7;
+  }
 }

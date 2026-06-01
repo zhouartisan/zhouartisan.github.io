@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:lixiaolai.com)",
+      "Bash(gem environment *)",
+      "WebFetch(domain:api.github.com)",
+      "Bash(gh api *)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(find /d -maxdepth 8 -name \"_sass\" -path \"*/jekyll-theme-chirpy*\" -type d)",
+      "Bash(find /e -maxdepth 8 -name \"_sass\" -path \"*/jekyll-theme-chirpy*\" -type d)",
+      "Bash(where bundle *)",
+      "Bash(cmd.exe /c \"where bundle\")",
+      "Bash(cmd.exe *)",
+      "Bash(powershell.exe *)",
+      "Bash(curl -sL \"https://api.github.com/repos/cotes2020/jekyll-theme-chirpy/git/trees/master?recursive=1\")",
+      "Bash(python3 -c ' *)",
+      "Bash(node -e ' *)",
+      "Bash(curl *)",
+      "Bash(bundle show *)",
+      "Bash(gem contents *)",
+      "Bash(gem list *)",
+      "Bash(where ruby *)",
+      "Bash(where gem *)"
+    ]
+  }
+}
