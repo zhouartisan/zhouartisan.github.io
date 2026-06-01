@@ -1,0 +1,24 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {% for page in site.pages %}
+    {% if page.url != '/404.html' and page.url != '/sitemap.xml' %}
+  <url>
+    <loc>{{ site.url }}{{ page.url | replace: 'index.html', '' }}</loc>
+    <lastmod>{{ page.last_modified_at | default: page.date | date: "%Y-%m-%d" }}</lastmod>
+    <changefreq>{% if page.layout == 'home' %}daily{% elsif page.layout == 'post' %}monthly{% else %}weekly{% endif %}</changefreq>
+    <priority>{% if page.layout == 'home' %}1.0{% elsif page.layout == 'post' %}0.8{% else %}0.5{% endif %}</priority>
+  </url>
+    {% endif %}
+  {% endfor %}
+  {% for post in site.posts %}
+  <url>
+    <loc>{{ site.url }}{{ post.url }}</loc>
+    <lastmod>{{ post.last_modified_at | default: post.date | date: "%Y-%m-%d" }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  {% endfor %}
+</urlset>
