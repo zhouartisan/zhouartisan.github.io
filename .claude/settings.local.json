@@ -22,7 +22,10 @@
       "Bash(gem list *)",
       "Bash(where ruby *)",
       "Bash(where gem *)",
-      "Bash(gh run *)"
+      "Bash(gh run *)",
+      "Bash(file \"E:/zhouartisan.github.io/assets/img/avatar.png\" \"E:/zhouartisan.github.io/assets/img/social-preview.jpg\")",
+      "Bash(powershell -Command \"Get-Command *magick* -ErrorAction SilentlyContinue\")",
+      "Bash(python -c \"from PIL import Image; print\\('Pillow available'\\)\")"
     ]
   }
 }

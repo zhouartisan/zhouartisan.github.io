@@ -94,7 +94,7 @@ theme_mode: # [light | dark]  # 留空跟随系统，或填写 light/dark
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: /assets/img/avatar.png  # 你需要将头像图片放到这个路径
+avatar: /assets/img/avatar.jpg
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
