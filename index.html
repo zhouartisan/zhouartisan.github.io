@@ -1,4 +1,43 @@
 ---
-layout: home
-# Index page
+layout: page
+title: 线上书房
 ---
+
+<div class="home-entry">
+  <p class="home-entry__eyebrow">一位图书管理猿的线上书房</p>
+  <h1>给阅读、思考和生活，留一点空间。</h1>
+  <p class="home-entry__intro">
+    这里记录读书笔记、注意力与数字生活，也收集教育、健康和日常里的新发现。
+    愿我们在信息很快的时代，仍然能慢慢读、认真想。
+  </p>
+
+  <nav class="home-entry__topics" aria-label="按主题浏览">
+    <a href="/categories/读书/">读书与阅读 <span>书单、阅读方法与读书笔记</span></a>
+    <a href="/categories/数字生活/">注意力与数字生活 <span>屏幕、习惯与认知</span></a>
+    <a href="/categories/教育/">教育与成长 <span>儿童、户外与学习</span></a>
+  </nav>
+
+  <section class="home-entry__featured" aria-labelledby="home-featured-title">
+    <p class="home-entry__eyebrow">从这里开始</p>
+    <h2 id="home-featured-title"><a href="/posts/reading-list-2025/">我的年度读书总结（2025）</a></h2>
+    <p>十本书，以及这一年阅读方式和体验的变化。</p>
+  </section>
+
+  <section class="home-entry__recent" aria-labelledby="home-recent-title">
+    <div class="home-entry__section-heading">
+      <h2 id="home-recent-title">最近更新</h2>
+      <a href="/archives/">浏览全部文章 <span aria-hidden="true">→</span></a>
+    </div>
+    <ul>
+      {% for post in site.posts limit: 5 %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+        {% if post.description %}<p>{{ post.description }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <p class="home-entry__subscribe"><a href="{{ '/feed.xml' | relative_url }}">订阅 RSS</a>，有新文章时再见。</p>
+</div>
