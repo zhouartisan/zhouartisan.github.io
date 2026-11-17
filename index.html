@@ -4,29 +4,70 @@ title: 线上书房
 ---
 
 <div class="home-entry">
-  <p class="home-entry__eyebrow">一位图书管理猿的线上书房</p>
-  <h1>给阅读、思考和生活，留一点空间。</h1>
-  <p class="home-entry__intro">
-    这里记录读书笔记、注意力与数字生活，也收集教育、健康和日常里的新发现。
-    愿我们在信息很快的时代，仍然能慢慢读、认真想。
-  </p>
+  <section class="home-entry__hero" aria-labelledby="home-title">
+    <div class="home-entry__hero-copy">
+      <p class="home-entry__eyebrow"><span></span> 一位图书管理猿的线上书房</p>
+      <h1 id="home-title">给阅读、思考和生活，<em>留一点空间。</em></h1>
+      <p class="home-entry__intro">
+        记录读书笔记、注意力与数字生活，也收集教育、健康和日常里的新发现。
+        在信息很快的时代，慢慢读，认真想。
+      </p>
+      <div class="home-entry__actions">
+        <a class="home-entry__primary-link" href="{{ '/archives/' | relative_url }}">开始阅读 <span aria-hidden="true">→</span></a>
+        <a class="home-entry__text-link" href="#home-topics">按主题探索</a>
+      </div>
+    </div>
+    <aside class="home-entry__hero-note" aria-label="书房寄语">
+      <span class="home-entry__note-mark" aria-hidden="true">“</span>
+      <p>众鸟欣有托，<br>吾亦爱吾庐。</p>
+      <span class="home-entry__note-caption">读一点，想一点，写下来。</span>
+      <span class="home-entry__note-line" aria-hidden="true"></span>
+    </aside>
+  </section>
 
-  <nav class="home-entry__topics" aria-label="按主题浏览">
-    <a href="/categories/读书/">读书与阅读 <span>书单、阅读方法与读书笔记</span></a>
-    <a href="/categories/数字生活/">注意力与数字生活 <span>屏幕、习惯与认知</span></a>
-    <a href="/categories/教育/">教育与成长 <span>儿童、户外与学习</span></a>
+  <nav class="home-entry__topics" id="home-topics" aria-label="按主题浏览">
+    <a href="{{ '/categories/读书/' | relative_url }}">
+      <span class="home-entry__topic-number">01 / 阅读</span>
+      <strong>读书与阅读</strong>
+      <span class="home-entry__topic-description">书单、阅读方法与读书笔记</span>
+      <span class="home-entry__topic-arrow" aria-hidden="true">↗</span>
+    </a>
+    <a href="{{ '/categories/数字生活/' | relative_url }}">
+      <span class="home-entry__topic-number">02 / 留白</span>
+      <strong>注意力与数字生活</strong>
+      <span class="home-entry__topic-description">屏幕、习惯与认知</span>
+      <span class="home-entry__topic-arrow" aria-hidden="true">↗</span>
+    </a>
+    <a href="{{ '/categories/教育/' | relative_url }}">
+      <span class="home-entry__topic-number">03 / 成长</span>
+      <strong>教育与成长</strong>
+      <span class="home-entry__topic-description">儿童、户外与学习</span>
+      <span class="home-entry__topic-arrow" aria-hidden="true">↗</span>
+    </a>
   </nav>
 
   <section class="home-entry__featured" aria-labelledby="home-featured-title">
-    <p class="home-entry__eyebrow">从这里开始</p>
-    <h2 id="home-featured-title"><a href="/posts/reading-list-2025/">我的年度读书总结（2025）</a></h2>
-    <p>十本书，以及这一年阅读方式和体验的变化。</p>
+    <div class="home-entry__featured-copy">
+      <p class="home-entry__eyebrow">书房精选 <span aria-hidden="true">/</span> 年度阅读</p>
+      <h2 id="home-featured-title"><a href="{{ '/posts/reading-list-2025/' | relative_url }}">我的年度读书总结（2025）</a></h2>
+      <p>十本书，以及这一年阅读方式和体验的变化。关于工作、投资、时间与认知，也关于阅读带来的喜悦。</p>
+      <a class="home-entry__featured-link" href="{{ '/posts/reading-list-2025/' | relative_url }}">读这篇文章 <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="home-entry__featured-art" aria-hidden="true">
+      <span>READ</span>
+      <span>·</span>
+      <span>REFLECT</span>
+      <span class="home-entry__featured-orbit"></span>
+    </div>
   </section>
 
   <section class="home-entry__recent" aria-labelledby="home-recent-title">
     <div class="home-entry__section-heading">
-      <h2 id="home-recent-title">最近更新</h2>
-      <a href="/archives/">浏览全部文章 <span aria-hidden="true">→</span></a>
+      <div>
+        <p class="home-entry__eyebrow">新近写下</p>
+        <h2 id="home-recent-title">最近更新</h2>
+      </div>
+      <a href="{{ '/archives/' | relative_url }}">浏览全部文章 <span aria-hidden="true">→</span></a>
     </div>
     <ul>
       {% for post in site.posts limit: 5 %}
@@ -39,5 +80,5 @@ title: 线上书房
     </ul>
   </section>
 
-  <p class="home-entry__subscribe"><a href="{{ '/feed.xml' | relative_url }}">订阅 RSS</a>，有新文章时再见。</p>
+  <p class="home-entry__subscribe">喜欢这里的慢节奏？<a href="{{ '/feed.xml' | relative_url }}">订阅 RSS</a>，有新文章时再见。</p>
 </div>
