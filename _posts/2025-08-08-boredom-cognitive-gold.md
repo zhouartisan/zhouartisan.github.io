@@ -36,5 +36,5 @@ description: 无聊是大脑的暂停键：从哈佛「电击按钮」实验谈�
 
 **参考链接**
 
-- [Our Daily Read — Should we embrace boredom?](http://www.ourdailyread.com/2025/06/the-big-idea-should-we-embrace-boredom/)
+- [Our Daily Read — Should we embrace boredom?](https://www.ourdailyread.com/2025/06/the-big-idea-should-we-embrace-boredom/)
 - [ScienceAlert — Being bored could actually be good for your brain](https://www.sciencealert.com/being-bored-could-actually-be-good-for-your-brain-scientists-reveal)
