@@ -36,6 +36,11 @@
   --table-header-bg: #f6f8fa;
   --shadow: none;
   --card-shadow: none;
+  --home-accent: #ad7730;
+  --home-accent-soft: rgba(173, 119, 48, 0.3);
+  --home-art-color: rgba(87, 99, 85, 0.78);
+  --home-btn-bg: #273b35;
+  --home-btn-hover-bg: #38564b;
 }
 
 /* 暗色模式 — GitHub Dark 风格 */
@@ -59,6 +64,11 @@
   --table-header-bg: #161b22;
   --shadow: none;
   --card-shadow: none;
+  --home-accent: #e0a958;
+  --home-accent-soft: rgba(224, 169, 88, 0.35);
+  --home-art-color: rgba(165, 180, 162, 0.78);
+  --home-btn-bg: #38564b;
+  --home-btn-hover-bg: #476d5f;
 }
 
 /* 系统偏好暗色模式兜底 */
@@ -83,6 +93,11 @@
     --table-header-bg: #161b22;
     --shadow: none;
     --card-shadow: none;
+    --home-accent: #e0a958;
+    --home-accent-soft: rgba(224, 169, 88, 0.35);
+    --home-art-color: rgba(165, 180, 162, 0.78);
+    --home-btn-bg: #38564b;
+    --home-btn-hover-bg: #476d5f;
   }
 }
 
@@ -527,7 +542,7 @@ pre.highlight {
       vertical-align: 0.08rem;
     }
 
-    h1 {
+    .home-entry__hero-title {
       max-width: 35rem;
       margin: 0 0 1rem;
       font-size: clamp(2rem, 5vw, 3.15rem);
@@ -536,7 +551,7 @@ pre.highlight {
       line-height: 1.3;
 
       em {
-        color: #ad7730;
+        color: var(--home-accent);
         font-style: normal;
       }
     }
@@ -564,7 +579,7 @@ pre.highlight {
     gap: 1.1rem;
     padding: 0.65rem 1rem;
     border-radius: 0.4rem;
-    background: #273b35;
+    background: var(--home-btn-bg);
     color: #fff !important;
     font-size: 0.9rem;
     font-weight: 600;
@@ -573,7 +588,7 @@ pre.highlight {
 
     &:hover {
       transform: translateY(-2px);
-      background: #38564b;
+      background: var(--home-btn-hover-bg);
     }
   }
 
@@ -591,7 +606,7 @@ pre.highlight {
     flex-direction: column;
     justify-content: center;
     padding: 1.5rem;
-    border-left: 1px solid rgba(173, 119, 48, 0.3);
+    border-left: 1px solid var(--home-accent-soft);
   }
 
   &__note-mark {
@@ -625,10 +640,6 @@ pre.highlight {
     height: 1px;
     margin-top: 1.1rem;
     background: #c9974f;
-  }
-
-  &__intro {
-    max-width: 37rem;
   }
 
   &__topics {
@@ -665,7 +676,7 @@ pre.highlight {
     }
 
     .home-entry__topic-number {
-      color: #ad7730;
+      color: var(--home-accent);
       font-size: 0.68rem;
       letter-spacing: 0.1em;
     }
@@ -680,7 +691,7 @@ pre.highlight {
       position: absolute;
       right: 1rem;
       bottom: 0.8rem;
-      color: #ad7730;
+      color: var(--home-accent);
       font-size: 1rem;
     }
   }
@@ -722,7 +733,7 @@ pre.highlight {
 
     .home-entry__eyebrow span {
       margin: 0 0.2rem;
-      color: #ad7730;
+      color: var(--home-accent);
     }
   }
 
@@ -738,7 +749,7 @@ pre.highlight {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: rgba(87, 99, 85, 0.78);
+    color: var(--home-art-color);
     font-family: Georgia, serif;
     font-size: 0.76rem;
     letter-spacing: 0.32em;
@@ -835,7 +846,7 @@ pre.highlight {
   .home-entry__hero-note {
     min-height: auto;
     padding: 1rem 1.25rem;
-    border-top: 1px solid rgba(173, 119, 48, 0.3);
+    border-top: 1px solid var(--home-accent-soft);
     border-left: 0;
   }
 
@@ -901,7 +912,7 @@ pre.highlight {
     padding: 1.35rem;
   }
 
-  .home-entry__hero-copy h1 {
+  .home-entry__hero-title {
     font-size: 1.9rem;
   }
 
