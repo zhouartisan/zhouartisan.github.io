@@ -4,81 +4,84 @@ title: 线上书房
 ---
 
 <div class="home-entry">
-  <section class="home-entry__hero" aria-labelledby="home-title">
-    <div class="home-entry__hero-copy">
-      <p class="home-entry__eyebrow"><span></span> 一位图书管理猿的线上书房</p>
-      <h1 id="home-title" class="home-entry__hero-title">给阅读、思考和生活，<br><em>留一点空间。</em></h1>
-      <p class="home-entry__intro">
-        记录读书笔记、注意力与数字生活，也收集教育、健康和日常里的新发现。
-        在信息很快的时代，慢慢读，认真想。
-      </p>
-      <div class="home-entry__actions">
-        <a class="home-entry__primary-link" href="{{ '/archives/' | relative_url }}">开始阅读 <span aria-hidden="true">→</span></a>
-        <a class="home-entry__text-link" href="#home-topics">按主题探索</a>
-      </div>
+  <header class="home-entry__lead" aria-labelledby="home-title">
+    <h1 id="home-title" class="home-entry__title">慢读，认真想。</h1>
+    <p class="home-entry__summary">
+      记录读书笔记、注意力与数字生活，也收集教育、健康和日常里值得留下的发现。
+      在信息很快的时代，给阅读和思考留一点安静的地方。
+    </p>
+  </header>
+
+  <section class="home-entry__catalog" aria-labelledby="home-featured-title">
+    <div class="home-entry__catalog-head">
+      <span class="home-entry__catalog-label">馆藏精选</span>
+      <time class="home-entry__catalog-date" datetime="2026-01-01">2026-01-01</time>
     </div>
-    <aside class="home-entry__hero-note" aria-label="书房寄语">
-      <span class="home-entry__note-mark" aria-hidden="true">“</span>
-      <p>众鸟欣有托，<br>吾亦爱吾庐。</p>
-      <span class="home-entry__note-caption">读一点，想一点，写下来。</span>
-      <span class="home-entry__note-line" aria-hidden="true"></span>
-    </aside>
+    <h2 id="home-featured-title" class="home-entry__catalog-title">
+      <a href="{{ '/posts/reading-list-2025/' | relative_url }}">我的年度读书总结（2025）</a>
+    </h2>
+    <p class="home-entry__catalog-desc">
+      十本书，以及这一年阅读方式和体验的变化：关于工作、投资、时间与认知，也关于阅读带来的喜悦。
+    </p>
+    <div class="home-entry__catalog-foot">
+      <a class="home-entry__catalog-link" href="{{ '/posts/reading-list-2025/' | relative_url }}">阅读全文</a>
+      <span class="home-entry__catalog-meta">年度书单</span>
+    </div>
   </section>
 
-  <nav class="home-entry__topics" id="home-topics" aria-label="按主题浏览">
-    <a href="{{ '/categories/读书/' | relative_url }}">
-      <span class="home-entry__topic-number">01 / 阅读</span>
-      <strong>读书与阅读</strong>
-      <span class="home-entry__topic-description">书单、阅读方法与读书笔记</span>
-      <span class="home-entry__topic-arrow" aria-hidden="true">↗</span>
-    </a>
-    <a href="{{ '/categories/数字生活/' | relative_url }}">
-      <span class="home-entry__topic-number">02 / 留白</span>
-      <strong>注意力与数字生活</strong>
-      <span class="home-entry__topic-description">屏幕、习惯与认知</span>
-      <span class="home-entry__topic-arrow" aria-hidden="true">↗</span>
-    </a>
-    <a href="{{ '/categories/教育/' | relative_url }}">
-      <span class="home-entry__topic-number">03 / 成长</span>
-      <strong>教育与成长</strong>
-      <span class="home-entry__topic-description">儿童、户外与学习</span>
-      <span class="home-entry__topic-arrow" aria-hidden="true">↗</span>
-    </a>
-  </nav>
-
-  <section class="home-entry__featured" aria-labelledby="home-featured-title">
-    <div class="home-entry__featured-copy">
-      <p class="home-entry__eyebrow">书房精选 <span aria-hidden="true">/</span> 年度阅读</p>
-      <h2 id="home-featured-title"><a href="{{ '/posts/reading-list-2025/' | relative_url }}">我的年度读书总结（2025）</a></h2>
-      <p>十本书，以及这一年阅读方式和体验的变化。关于工作、投资、时间与认知，也关于阅读带来的喜悦。</p>
-      <a class="home-entry__featured-link" href="{{ '/posts/reading-list-2025/' | relative_url }}">读这篇文章 <span aria-hidden="true">→</span></a>
-    </div>
-    <div class="home-entry__featured-art" aria-hidden="true">
-      <span>READ</span>
-      <span>·</span>
-      <span>REFLECT</span>
-      <span class="home-entry__featured-orbit"></span>
-    </div>
+  <section class="home-entry__shelves" aria-labelledby="home-shelves-title">
+    <h2 id="home-shelves-title" class="home-entry__section-title">主题书架</h2>
+    <nav class="home-entry__shelf-grid" aria-label="按主题浏览">
+      <a class="home-entry__shelf-item" href="{{ '/categories/读书/' | relative_url }}">
+        <div class="home-entry__shelf-head">
+          <strong class="home-entry__shelf-name">读书与阅读</strong>
+          <span class="home-entry__shelf-count">{{ site.categories['读书'].size | default: 0 }} 篇</span>
+        </div>
+        <span class="home-entry__shelf-desc">书单、阅读方法与读书笔记</span>
+      </a>
+      <a class="home-entry__shelf-item" href="{{ '/categories/数字生活/' | relative_url }}">
+        <div class="home-entry__shelf-head">
+          <strong class="home-entry__shelf-name">注意力与数字生活</strong>
+          <span class="home-entry__shelf-count">{{ site.categories['数字生活'].size | default: 0 }} 篇</span>
+        </div>
+        <span class="home-entry__shelf-desc">屏幕、习惯与认知观察</span>
+      </a>
+      <a class="home-entry__shelf-item" href="{{ '/categories/教育/' | relative_url }}">
+        <div class="home-entry__shelf-head">
+          <strong class="home-entry__shelf-name">教育与成长</strong>
+          <span class="home-entry__shelf-count">{{ site.categories['教育'].size | default: 0 }} 篇</span>
+        </div>
+        <span class="home-entry__shelf-desc">儿童、户外与学习</span>
+      </a>
+    </nav>
   </section>
 
   <section class="home-entry__recent" aria-labelledby="home-recent-title">
-    <div class="home-entry__section-heading">
-      <div>
-        <p class="home-entry__eyebrow">新近写下</p>
-        <h2 id="home-recent-title">最近更新</h2>
-      </div>
-      <a href="{{ '/archives/' | relative_url }}">浏览全部文章 <span aria-hidden="true">→</span></a>
+    <div class="home-entry__section-bar">
+      <h2 id="home-recent-title" class="home-entry__section-title">近期笔记</h2>
+      <a class="home-entry__archive-link" href="{{ '/archives/' | relative_url }}">全部归档</a>
     </div>
-    <ul>
-      {% for post in site.posts limit: 5 %}
-      <li>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-        {% if post.description %}<p>{{ post.description }}</p>{% endif %}
+    <ol class="home-entry__toc">
+      {% for post in site.posts limit: 6 %}
+      <li class="home-entry__toc-item">
+        <time class="home-entry__toc-date" datetime="{{ post.date | date_to_xmlschema }}">
+          {{ post.date | date: "%Y-%m-%d" }}
+        </time>
+        <div class="home-entry__toc-body">
+          <a class="home-entry__toc-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          {% if post.description %}
+          <p class="home-entry__toc-desc">{{ post.description }}</p>
+          {% endif %}
+        </div>
+        {% if post.categories.size > 0 %}
+        <span class="home-entry__toc-cat">{{ post.categories | last }}</span>
+        {% endif %}
       </li>
       {% endfor %}
-    </ul>
+    </ol>
   </section>
 
-  <p class="home-entry__subscribe">喜欢这里的慢节奏？<a href="{{ '/feed.xml' | relative_url }}">订阅 RSS</a>，有新文章时再见。</p>
+  <p class="home-entry__colophon">
+    喜欢这里的慢节奏？可以<a href="{{ '/feed.xml' | relative_url }}">订阅 RSS</a>，有新文章时再见。
+  </p>
 </div>
