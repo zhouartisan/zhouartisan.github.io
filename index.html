@@ -62,7 +62,11 @@ title: 线上书房
       <a class="home-entry__archive-link" href="{{ '/archives/' | relative_url }}">全部归档</a>
     </div>
     <ol class="home-entry__toc">
-      {% for post in site.posts limit: 6 %}
+      {% assign recent_count = 0 %}
+      {% for post in site.posts %}
+      {% if post.url contains 'reading-list-2025' %}{% continue %}{% endif %}
+      {% assign recent_count = recent_count | plus: 1 %}
+      {% if recent_count > 6 %}{% break %}{% endif %}
       <li class="home-entry__toc-item">
         <time class="home-entry__toc-date" datetime="{{ post.date | date_to_xmlschema }}">
           {{ post.date | date: "%Y-%m-%d" }}

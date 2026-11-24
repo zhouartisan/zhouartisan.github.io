@@ -112,10 +112,8 @@
   --post-list-text-color: var(--ink-muted);
 }
 
-/* 暗色模式（深夜书桌） — 匹配 Chirpy 7.4 data-bs-theme 及历史属性 */
-:root[data-bs-theme="dark"],
-html[data-mode="dark"],
-[data-theme="dark"] {
+/* 暗色模式（深夜书桌） — 匹配 Chirpy 7.4 data-bs-theme、历史属性及系统暗色偏好 */
+@mixin dark-tokens {
   --paper-bg: #161918;
   --stack-bg: #1e2321;
   --stack-hover-bg: #262c29;
@@ -201,18 +199,15 @@ html[data-mode="dark"],
   --post-list-text-color: var(--ink-muted);
 }
 
+:root[data-bs-theme="dark"],
+html[data-mode="dark"],
+[data-theme="dark"] {
+  @include dark-tokens;
+}
+
 @media (prefers-color-scheme: dark) {
   :root:not([data-bs-theme="light"]):not([data-mode="light"]):not([data-theme="light"]) {
-    --paper-bg: #161918;
-    --stack-bg: #1e2321;
-    --stack-hover-bg: #262c29;
-    --ink-color: #e3e6e4;
-    --ink-muted: #8f9994;
-    --rule-color: #2d3431;
-    --accent-color: #7db1c4;
-    --accent-hover: #9ec8d7;
-    --mark-bg: #3a3420;
-    --topbar-bg: rgba(22, 25, 24, 0.92);
+    @include dark-tokens;
   }
 }
 
@@ -220,6 +215,7 @@ html[data-mode="dark"],
 
 html {
   background-color: var(--paper-bg);
+  overflow-x: clip;
 }
 
 body {
@@ -228,6 +224,7 @@ body {
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.75;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -322,6 +319,14 @@ input:focus-visible {
       }
     }
   }
+}
+
+/* 自定义首页使用 layout: page，补齐侧边栏“首页”激活态指示条 */
+body:has(.home-entry) #sidebar ul.nav .nav-item:first-child .nav-link {
+  color: var(--ink-color);
+  font-weight: 600;
+  background: transparent;
+  border-left-color: var(--accent-color);
 }
 
 #topbar-wrapper {
@@ -488,7 +493,7 @@ article:has(.home-entry) > h1:first-child {
   &__shelf-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.25rem;
+    gap: 1.25rem 2rem;
     margin-top: 1rem;
   }
 
@@ -628,7 +633,9 @@ article:has(.home-entry) > h1:first-child {
 
     a {
       color: var(--accent-color);
-      border-bottom: 1px solid var(--rule-color) !important;
+      font-weight: 500;
+      padding-bottom: 0.08rem;
+      border-bottom: 1px solid var(--accent-color) !important;
       transition: border-color 0.18s ease, color 0.18s ease;
 
       &:hover {
@@ -639,22 +646,21 @@ article:has(.home-entry) > h1:first-child {
   }
 }
 
-/* ---- 5. 文章阅读页（中文平装书排版，匹配 Chirpy 7.4 main article） ---- */
+/* ---- 5. 文章阅读页与栏目页标题（中文平装书排版，匹配 Chirpy 7.4 main article） ---- */
 
-#main-wrapper main article header {
-  h1 {
-    font-family: var(--font-serif);
-    color: var(--ink-color);
-    letter-spacing: 0.02em;
-    line-height: 1.4;
-    font-weight: 600;
-  }
+#main-wrapper main article header h1,
+#main-wrapper main article > h1.dynamic-title {
+  font-family: var(--font-serif);
+  color: var(--ink-color);
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  font-weight: 600;
+}
 
-  .post-desc {
-    color: var(--ink-muted);
-    font-size: 1rem;
-    line-height: 1.75;
-  }
+#main-wrapper main article header .post-desc {
+  color: var(--ink-muted);
+  font-size: 1rem;
+  line-height: 1.75;
 }
 
 .post-meta {
@@ -663,7 +669,7 @@ article:has(.home-entry) > h1:first-child {
   font-variant-numeric: tabular-nums;
 }
 
-#main-wrapper main article > .content:not(:has(.home-entry)) {
+#main-wrapper main article .content:not(:has(.home-entry)) {
   max-width: 39rem;
   font-family: var(--font-serif);
   font-size: 1.0625rem;
@@ -958,7 +964,7 @@ footer,
     }
   }
 
-  #main-wrapper main article > .content:not(:has(.home-entry)) {
+  #main-wrapper main article .content:not(:has(.home-entry)) {
     font-size: 1rem;
     line-height: 1.85;
   }
