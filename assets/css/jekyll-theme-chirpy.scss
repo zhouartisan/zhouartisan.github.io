@@ -10,12 +10,13 @@
 
 /* ============================================================
    一位图书管理猿 — 平装书印本 × 图书馆索书目
-   所有覆盖均在 Chirpy 主题加载之后，不修改主题源文件
+   所有覆盖均在 Chirpy 7.x 主题加载之后，不修改主题源文件
    ============================================================ */
 
-/* ---- 1. 色彩与字体 Token ---- */
+/* ---- 1. 色彩与字体 Token（匹配 Chirpy 7.4 data-bs-theme 优先级） ---- */
 
-:root {
+:root,
+:root[data-bs-theme="light"] {
   /* 核心纸墨色板（日间印本） */
   --paper-bg: #f9f9f6;
   --stack-bg: #eef1ee;
@@ -35,11 +36,22 @@
   --font-mono: "SFMono-Regular", Menlo, Monaco, Consolas,
     "Liberation Mono", monospace;
 
-  /* 覆盖 Chirpy 7.x 亮色变量 */
+  /* 覆盖 Chirpy 7.4 亮色变量 */
   --main-bg: var(--paper-bg);
   --body-bg: var(--paper-bg);
   --body-bg-color: var(--paper-bg);
-  --topbar-bg: rgba(249, 249, 246, 0.92);
+  --main-border-color: var(--rule-color);
+  --border-color: var(--rule-color);
+  --heading-color: var(--ink-color);
+  --text-color: var(--ink-color);
+  --text-muted-color: var(--ink-muted);
+  --label-color: var(--ink-muted);
+  --link-color: var(--accent-color);
+  --link-hover-color: var(--accent-hover);
+  --link-underline-color: var(--rule-color);
+
+  --site-title-color: var(--ink-color);
+  --site-subtitle-color: var(--ink-muted);
   --sidebar-bg: var(--stack-bg);
   --sidebar-border-color: var(--rule-color);
   --sidebar-muted-color: var(--ink-muted);
@@ -47,47 +59,61 @@
   --sidebar-hover-bg: var(--stack-hover-bg);
   --sidebar-btn-bg: transparent;
   --sidebar-btn-color: var(--ink-muted);
+  --avatar-border-color: var(--rule-color);
+
+  --topbar-bg: rgba(249, 249, 246, 0.92);
+  --topbar-text-color: var(--ink-muted);
+  --search-border-color: var(--rule-color);
+  --search-icon-color: var(--ink-muted);
+  --input-focus-border-color: var(--accent-color);
+
   --card-bg: var(--paper-bg);
-  --card-hovor-bg: var(--stack-bg);
+  --card-header-bg: var(--stack-bg);
+  --card-hover-bg: var(--stack-bg);
   --card-border-color: var(--rule-color);
   --card-shadow: none;
   --shadow: none;
-  --heading-color: var(--ink-color);
-  --text-color: var(--ink-color);
-  --text-muted-color: var(--ink-muted);
-  --link-color: var(--accent-color);
-  --link-hover-color: var(--accent-hover);
-  --link-underline-color: var(--rule-color);
-  --border-color: var(--rule-color);
-  --main-border-color: var(--rule-color);
+
+  --button-bg: var(--stack-bg);
   --btn-bg: var(--stack-bg);
   --btn-hover-bg: var(--stack-hover-bg);
   --btn-border-color: var(--rule-color);
   --btn-backtotop-bg: var(--stack-bg);
   --btn-backtotop-color: var(--ink-muted);
   --btn-backtotop-border-color: var(--rule-color);
+  --btn-patinator-text-color: var(--ink-muted);
+  --btn-paginator-hover-color: var(--stack-bg);
+  --btn-share-color: var(--ink-muted);
+  --btn-share-hover-color: var(--accent-color);
+
   --toc-highlight: var(--accent-color);
+  --toc-popup-border-color: var(--rule-color);
   --blockquote-border-color: var(--accent-color);
   --blockquote-text-color: var(--ink-muted);
   --highlight-bg: var(--mark-bg);
   --highlight-bg-color: var(--stack-bg);
   --code-bg: var(--stack-bg);
   --inline-code-bg: var(--stack-bg);
+  --code-color: var(--ink-color);
   --table-header-bg: var(--stack-bg);
   --tb-odd-bg: var(--paper-bg);
   --tb-even-bg: var(--stack-bg);
   --tb-border-color: var(--rule-color);
-  --search-border-color: var(--rule-color);
+
   --tag-border: var(--rule-color);
+  --tag-shadow: transparent;
   --tag-hover: var(--stack-bg);
+  --search-tag-bg: var(--stack-bg);
   --categories-border: var(--rule-color);
   --categories-hover-bg: var(--stack-bg);
   --timeline-color: var(--rule-color);
   --timeline-node-bg: var(--accent-color);
   --footnote-target-bg: var(--mark-bg);
+  --post-list-text-color: var(--ink-muted);
 }
 
-/* 暗色模式（深夜书桌） — 同时兼容 Chirpy data-mode 与 data-theme */
+/* 暗色模式（深夜书桌） — 匹配 Chirpy 7.4 data-bs-theme 及历史属性 */
+:root[data-bs-theme="dark"],
 html[data-mode="dark"],
 [data-theme="dark"] {
   --paper-bg: #161918;
@@ -99,11 +125,84 @@ html[data-mode="dark"],
   --accent-color: #7db1c4;
   --accent-hover: #9ec8d7;
   --mark-bg: #3a3420;
+
+  --main-bg: var(--paper-bg);
+  --body-bg: var(--paper-bg);
+  --body-bg-color: var(--paper-bg);
+  --main-border-color: var(--rule-color);
+  --border-color: var(--rule-color);
+  --heading-color: var(--ink-color);
+  --text-color: var(--ink-color);
+  --text-muted-color: var(--ink-muted);
+  --label-color: var(--ink-muted);
+  --link-color: var(--accent-color);
+  --link-hover-color: var(--accent-hover);
+  --link-underline-color: var(--rule-color);
+
+  --site-title-color: var(--ink-color);
+  --site-subtitle-color: var(--ink-muted);
+  --sidebar-bg: var(--stack-bg);
+  --sidebar-border-color: var(--rule-color);
+  --sidebar-muted-color: var(--ink-muted);
+  --sidebar-active-color: var(--ink-color);
+  --sidebar-hover-bg: var(--stack-hover-bg);
+  --sidebar-btn-bg: transparent;
+  --sidebar-btn-color: var(--ink-muted);
+  --avatar-border-color: var(--rule-color);
+
   --topbar-bg: rgba(22, 25, 24, 0.92);
+  --topbar-text-color: var(--ink-muted);
+  --search-border-color: var(--rule-color);
+  --search-icon-color: var(--ink-muted);
+  --input-focus-border-color: var(--accent-color);
+
+  --card-bg: var(--paper-bg);
+  --card-header-bg: var(--stack-bg);
+  --card-hover-bg: var(--stack-bg);
+  --card-border-color: var(--rule-color);
+  --card-shadow: none;
+  --shadow: none;
+
+  --button-bg: var(--stack-bg);
+  --btn-bg: var(--stack-bg);
+  --btn-hover-bg: var(--stack-hover-bg);
+  --btn-border-color: var(--rule-color);
+  --btn-backtotop-bg: var(--stack-bg);
+  --btn-backtotop-color: var(--ink-muted);
+  --btn-backtotop-border-color: var(--rule-color);
+  --btn-patinator-text-color: var(--ink-muted);
+  --btn-paginator-hover-color: var(--stack-bg);
+  --btn-share-color: var(--ink-muted);
+  --btn-share-hover-color: var(--accent-color);
+
+  --toc-highlight: var(--accent-color);
+  --toc-popup-border-color: var(--rule-color);
+  --blockquote-border-color: var(--accent-color);
+  --blockquote-text-color: var(--ink-muted);
+  --highlight-bg: var(--mark-bg);
+  --highlight-bg-color: var(--stack-bg);
+  --code-bg: var(--stack-bg);
+  --inline-code-bg: var(--stack-bg);
+  --code-color: var(--ink-color);
+  --table-header-bg: var(--stack-bg);
+  --tb-odd-bg: var(--paper-bg);
+  --tb-even-bg: var(--stack-bg);
+  --tb-border-color: var(--rule-color);
+
+  --tag-border: var(--rule-color);
+  --tag-shadow: transparent;
+  --tag-hover: var(--stack-bg);
+  --search-tag-bg: var(--stack-bg);
+  --categories-border: var(--rule-color);
+  --categories-hover-bg: var(--stack-bg);
+  --timeline-color: var(--rule-color);
+  --timeline-node-bg: var(--accent-color);
+  --footnote-target-bg: var(--mark-bg);
+  --post-list-text-color: var(--ink-muted);
 }
 
 @media (prefers-color-scheme: dark) {
-  html:not([data-mode="light"]):not([data-theme="light"]) {
+  :root:not([data-bs-theme="light"]):not([data-mode="light"]):not([data-theme="light"]) {
     --paper-bg: #161918;
     --stack-bg: #1e2321;
     --stack-hover-bg: #262c29;
@@ -146,7 +245,7 @@ input:focus-visible {
   color: var(--ink-color);
 }
 
-/* ---- 3. 侧栏（书脊） ---- */
+/* ---- 3. 侧栏（书脊）与顶栏 ---- */
 
 #sidebar {
   background: var(--sidebar-bg);
@@ -168,15 +267,18 @@ input:focus-visible {
 
   .site-title {
     font-family: var(--font-serif);
+    font-size: 1.32rem;
     color: var(--ink-color);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.04em;
     font-weight: 600;
+    white-space: nowrap;
   }
 
   .site-subtitle {
     font-family: var(--font-serif);
     font-style: normal;
-    letter-spacing: 0.06em;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
     line-height: 1.7;
     color: var(--ink-muted);
   }
@@ -209,6 +311,7 @@ input:focus-visible {
   .sidebar-bottom {
     a,
     button {
+      background: transparent;
       color: var(--ink-muted);
       box-shadow: none;
       transition: color 0.18s ease;
@@ -221,14 +324,13 @@ input:focus-visible {
   }
 }
 
-/* 顶栏去厚重阴影 */
 #topbar-wrapper {
   background-color: var(--topbar-bg);
   border-bottom: 1px solid var(--rule-color);
   box-shadow: none;
 }
 
-#search-wrapper {
+#search {
   background: var(--stack-bg);
   border: 1px solid var(--rule-color);
   border-radius: 3px;
@@ -249,8 +351,16 @@ article:has(.home-entry) > h1:first-child {
 }
 
 .home-entry {
+  width: 100%;
+  min-width: 0;
   max-width: 44rem;
   margin: 0.75rem 0 0;
+
+  /* 清除 Chirpy .content a 默认底线，仅在明确需要处添加 */
+  a {
+    border-bottom: none;
+    text-decoration: none;
+  }
 
   /* 4.1 扉页导语（无边框、开放纸面） */
   &__lead {
@@ -317,7 +427,6 @@ article:has(.home-entry) > h1:first-child {
 
     a {
       color: var(--ink-color);
-      text-decoration: none;
       transition: color 0.18s ease;
 
       &:hover {
@@ -346,14 +455,13 @@ article:has(.home-entry) > h1:first-child {
     color: var(--accent-color);
     font-size: 0.9rem;
     font-weight: 600;
-    text-decoration: none;
-    border-bottom: 1px solid var(--accent-color);
+    border-bottom: 1px solid var(--accent-color) !important;
     padding-bottom: 0.1rem;
     transition: color 0.18s ease, border-color 0.18s ease;
 
     &:hover {
       color: var(--accent-hover);
-      border-bottom-color: var(--accent-hover);
+      border-bottom-color: var(--accent-hover) !important;
     }
   }
 
@@ -389,7 +497,6 @@ article:has(.home-entry) > h1:first-child {
     padding: 0.9rem 0 0.5rem;
     border-top: 1px solid var(--rule-color);
     color: var(--ink-color);
-    text-decoration: none;
     transition: border-color 0.18s ease;
 
     &:hover {
@@ -447,7 +554,6 @@ article:has(.home-entry) > h1:first-child {
   &__archive-link {
     color: var(--ink-muted);
     font-size: 0.85rem;
-    text-decoration: none;
     transition: color 0.18s ease;
 
     &:hover {
@@ -491,7 +597,7 @@ article:has(.home-entry) > h1:first-child {
     font-weight: 600;
     line-height: 1.5;
     color: var(--ink-color);
-    text-decoration: none;
+    overflow-wrap: anywhere;
     transition: color 0.18s ease;
 
     &:hover {
@@ -522,26 +628,33 @@ article:has(.home-entry) > h1:first-child {
 
     a {
       color: var(--accent-color);
-      text-decoration: none;
-      border-bottom: 1px solid var(--rule-color);
+      border-bottom: 1px solid var(--rule-color) !important;
       transition: border-color 0.18s ease, color 0.18s ease;
 
       &:hover {
         color: var(--accent-hover);
-        border-bottom-color: var(--accent-hover);
+        border-bottom-color: var(--accent-hover) !important;
       }
     }
   }
 }
 
-/* ---- 5. 文章阅读页（中文平装书排版） ---- */
+/* ---- 5. 文章阅读页（中文平装书排版，匹配 Chirpy 7.4 main article） ---- */
 
-article header h1,
-.post-title {
-  font-family: var(--font-serif);
-  color: var(--ink-color);
-  letter-spacing: 0.02em;
-  line-height: 1.4;
+#main-wrapper main article header {
+  h1 {
+    font-family: var(--font-serif);
+    color: var(--ink-color);
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+  .post-desc {
+    color: var(--ink-muted);
+    font-size: 1rem;
+    line-height: 1.75;
+  }
 }
 
 .post-meta {
@@ -550,109 +663,104 @@ article header h1,
   font-variant-numeric: tabular-nums;
 }
 
-#post-wrapper,
-#core-wrapper {
-  .content:not(:has(.home-entry)),
-  .post-content,
-  #post-content {
-    max-width: 39rem;
+#main-wrapper main article > .content:not(:has(.home-entry)) {
+  max-width: 39rem;
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.9;
+  color: var(--ink-color);
+
+  p {
+    margin-bottom: 1.45em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
-    font-size: 1.0625rem;
-    line-height: 1.9;
+    font-weight: 600;
+    letter-spacing: 0.02em;
     color: var(--ink-color);
+    margin-top: 2.4rem;
+    margin-bottom: 0.85rem;
+    line-height: 1.4;
+  }
 
-    p {
-      margin-bottom: 1.45em;
+  h2 {
+    font-size: 1.38rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--rule-color);
+  }
+
+  h3 {
+    font-size: 1.18rem;
+  }
+
+  ul, ol {
+    margin-bottom: 1.45em;
+
+    li {
+      margin-bottom: 0.45em;
+      line-height: 1.85;
+    }
+  }
+
+  strong {
+    color: var(--ink-color);
+    font-weight: 700;
+  }
+
+  blockquote {
+    border-left: 2px solid var(--accent-color);
+    padding: 0.25rem 0 0.25rem 1.2rem;
+    margin: 1.75rem 0;
+    color: var(--ink-muted);
+    font-style: normal;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a:not(.img-link) {
+    color: var(--accent-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule-color);
+    transition: color 0.18s ease, border-color 0.18s ease;
+
+    &:hover {
+      color: var(--accent-hover);
+      border-bottom-color: var(--accent-hover);
+    }
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: 3px;
+    margin: 1.75rem 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.75rem 0;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+
+    th, td {
+      padding: 0.6rem 0.9rem;
+      border: 1px solid var(--rule-color);
     }
 
-    h1, h2, h3, h4, h5, h6 {
-      font-family: var(--font-serif);
+    th {
+      background: var(--stack-bg);
       font-weight: 600;
-      letter-spacing: 0.02em;
       color: var(--ink-color);
-      margin-top: 2.5rem;
-      margin-bottom: 0.9rem;
-      line-height: 1.4;
     }
+  }
 
-    h2 {
-      font-size: 1.4rem;
-      padding-bottom: 0.35rem;
-      border-bottom: 1px solid var(--rule-color);
-    }
-
-    h3 {
-      font-size: 1.18rem;
-    }
-
-    ul, ol {
-      margin-bottom: 1.45em;
-
-      li {
-        margin-bottom: 0.45em;
-        line-height: 1.85;
-      }
-    }
-
-    strong {
-      color: var(--ink-color);
-      font-weight: 700;
-    }
-
-    blockquote {
-      border-left: 2px solid var(--accent-color);
-      padding: 0.25rem 0 0.25rem 1.2rem;
-      margin: 1.75rem 0;
-      color: var(--ink-muted);
-      font-style: normal;
-
-      p:last-child {
-        margin-bottom: 0;
-      }
-    }
-
-    a {
-      color: var(--accent-color);
-      text-decoration: none;
-      border-bottom: 1px solid var(--rule-color);
-      transition: color 0.18s ease, border-color 0.18s ease;
-
-      &:hover {
-        color: var(--accent-hover);
-        border-bottom-color: var(--accent-hover);
-      }
-    }
-
-    img {
-      max-width: 100%;
-      border-radius: 3px;
-      margin: 1.75rem 0;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.75rem 0;
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
-
-      th, td {
-        padding: 0.6rem 0.9rem;
-        border: 1px solid var(--rule-color);
-      }
-
-      th {
-        background: var(--stack-bg);
-        font-weight: 600;
-        color: var(--ink-color);
-      }
-    }
-
-    hr {
-      border: none;
-      border-top: 1px solid var(--rule-color);
-      margin: 2.25rem 0;
-    }
+  hr {
+    border: none;
+    border-top: 1px solid var(--rule-color);
+    margin: 2.25rem 0;
   }
 }
 
@@ -693,21 +801,21 @@ pre.highlight {
   font-family: var(--font-mono);
 }
 
-/* ---- 7. 右侧 TOC 目录与提示块 ---- */
+/* ---- 7. 右侧栏、TOC 目录与提示块 ---- */
 
-#toc-wrapper {
-  border-left: 1px solid var(--rule-color);
-  background: transparent;
-
-  .panel-heading,
-  .toc-title {
+#panel-wrapper {
+  .panel-heading {
     font-family: var(--font-sans);
     font-size: 0.82rem;
     font-weight: 600;
     color: var(--ink-muted);
     letter-spacing: 0.04em;
-    text-transform: none;
   }
+}
+
+#toc-wrapper {
+  border-left: 1px solid var(--rule-color);
+  background: transparent;
 
   nav#toc {
     font-family: var(--font-sans);
@@ -850,14 +958,9 @@ footer,
     }
   }
 
-  #post-wrapper,
-  #core-wrapper {
-    .content:not(:has(.home-entry)),
-    .post-content,
-    #post-content {
-      font-size: 1rem;
-      line-height: 1.85;
-    }
+  #main-wrapper main article > .content:not(:has(.home-entry)) {
+    font-size: 1rem;
+    line-height: 1.85;
   }
 }
 
