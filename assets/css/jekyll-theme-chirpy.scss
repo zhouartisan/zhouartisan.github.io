@@ -13,20 +13,47 @@
    所有覆盖均在 Chirpy 7.x 主题加载之后，不修改主题源文件
    ============================================================ */
 
-/* ---- 1. 色彩与字体 Token（匹配 Chirpy 7.4 data-bs-theme 优先级） ---- */
+/* ---- 1. 色彩与字体 Token（color-scheme + light-dark()，含旧浏览器完整降级） ---- */
 
-:root,
-:root[data-bs-theme="light"] {
-  /* 核心纸墨色板（日间印本） */
-  --paper-bg: #f9f9f6;
-  --stack-bg: #eef1ee;
-  --stack-hover-bg: #e5eae6;
-  --ink-color: #1a1f1d;
-  --ink-muted: #5d6662;
-  --rule-color: #dce2de;
-  --accent-color: #1f4e5f;
-  --accent-hover: #143642;
-  --mark-bg: #efe7c8;
+:root {
+  /* 原始日间 / 夜间纸墨色板 */
+  --paper-bg-light: #f9f9f6;
+  --stack-bg-light: #eef1ee;
+  --stack-hover-bg-light: #e5eae6;
+  --ink-color-light: #1a1f1d;
+  --ink-muted-light: #5d6662;
+  --rule-color-light: #dce2de;
+  --accent-color-light: #1f4e5f;
+  --accent-hover-light: #143642;
+  --mark-bg-light: #efe7c8;
+  --topbar-bg-light: rgba(249, 249, 246, 0.92);
+
+  --paper-bg-dark: #161918;
+  --stack-bg-dark: #1e2321;
+  --stack-hover-bg-dark: #262c29;
+  --ink-color-dark: #e3e6e4;
+  --ink-muted-dark: #8f9994;
+  --rule-color-dark: #2d3431;
+  --accent-color-dark: #7db1c4;
+  --accent-hover-dark: #9ec8d7;
+  --mark-bg-dark: #3a3420;
+  --topbar-bg-dark: rgba(22, 25, 24, 0.92);
+
+  /* 语义色板默认值（兼容不支持 light-dark() 的浏览器） */
+  --paper-bg: var(--paper-bg-light);
+  --stack-bg: var(--stack-bg-light);
+  --stack-hover-bg: var(--stack-hover-bg-light);
+  --ink-color: var(--ink-color-light);
+  --ink-muted: var(--ink-muted-light);
+  --rule-color: var(--rule-color-light);
+  --accent-color: var(--accent-color-light);
+  --accent-hover: var(--accent-hover-light);
+  --mark-bg: var(--mark-bg-light);
+  --topbar-bg-fallback: var(--topbar-bg-light);
+
+  /* 原生浏览器 UI 自动适配亮/暗模式（Baseline Widely Available） */
+  color-scheme: light dark;
+  accent-color: var(--accent-color);
 
   /* 字体家族（零外部依赖，原生中文宋体 + 系统无衬线） */
   --font-serif: "Songti SC", "STSong", "Noto Serif CJK SC",
@@ -35,183 +62,180 @@
     "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", Roboto, sans-serif;
   --font-mono: "SFMono-Regular", Menlo, Monaco, Consolas,
     "Liberation Mono", monospace;
-
-  /* 覆盖 Chirpy 7.4 亮色变量 */
-  --main-bg: var(--paper-bg);
-  --body-bg: var(--paper-bg);
-  --body-bg-color: var(--paper-bg);
-  --main-border-color: var(--rule-color);
-  --border-color: var(--rule-color);
-  --heading-color: var(--ink-color);
-  --text-color: var(--ink-color);
-  --text-muted-color: var(--ink-muted);
-  --label-color: var(--ink-muted);
-  --link-color: var(--accent-color);
-  --link-hover-color: var(--accent-hover);
-  --link-underline-color: var(--rule-color);
-
-  --site-title-color: var(--ink-color);
-  --site-subtitle-color: var(--ink-muted);
-  --sidebar-bg: var(--stack-bg);
-  --sidebar-border-color: var(--rule-color);
-  --sidebar-muted-color: var(--ink-muted);
-  --sidebar-active-color: var(--ink-color);
-  --sidebar-hover-bg: var(--stack-hover-bg);
-  --sidebar-btn-bg: transparent;
-  --sidebar-btn-color: var(--ink-muted);
-  --avatar-border-color: var(--rule-color);
-
-  --topbar-bg: rgba(249, 249, 246, 0.92);
-  --topbar-text-color: var(--ink-muted);
-  --search-border-color: var(--rule-color);
-  --search-icon-color: var(--ink-muted);
-  --input-focus-border-color: var(--accent-color);
-
-  --card-bg: var(--paper-bg);
-  --card-header-bg: var(--stack-bg);
-  --card-hover-bg: var(--stack-bg);
-  --card-border-color: var(--rule-color);
-  --card-shadow: none;
-  --shadow: none;
-
-  --button-bg: var(--stack-bg);
-  --btn-bg: var(--stack-bg);
-  --btn-hover-bg: var(--stack-hover-bg);
-  --btn-border-color: var(--rule-color);
-  --btn-backtotop-bg: var(--stack-bg);
-  --btn-backtotop-color: var(--ink-muted);
-  --btn-backtotop-border-color: var(--rule-color);
-  --btn-patinator-text-color: var(--ink-muted);
-  --btn-paginator-hover-color: var(--stack-bg);
-  --btn-share-color: var(--ink-muted);
-  --btn-share-hover-color: var(--accent-color);
-
-  --toc-highlight: var(--accent-color);
-  --toc-popup-border-color: var(--rule-color);
-  --blockquote-border-color: var(--accent-color);
-  --blockquote-text-color: var(--ink-muted);
-  --highlight-bg: var(--mark-bg);
-  --highlight-bg-color: var(--stack-bg);
-  --code-bg: var(--stack-bg);
-  --inline-code-bg: var(--stack-bg);
-  --code-color: var(--ink-color);
-  --table-header-bg: var(--stack-bg);
-  --tb-odd-bg: var(--paper-bg);
-  --tb-even-bg: var(--stack-bg);
-  --tb-border-color: var(--rule-color);
-
-  --tag-border: var(--rule-color);
-  --tag-shadow: transparent;
-  --tag-hover: var(--stack-bg);
-  --search-tag-bg: var(--stack-bg);
-  --categories-border: var(--rule-color);
-  --categories-hover-bg: var(--stack-bg);
-  --timeline-color: var(--rule-color);
-  --timeline-node-bg: var(--accent-color);
-  --footnote-target-bg: var(--mark-bg);
-  --post-list-text-color: var(--ink-muted);
 }
 
-/* 暗色模式（深夜书桌） — 匹配 Chirpy 7.4 data-bs-theme、历史属性及系统暗色偏好 */
-@mixin dark-tokens {
-  --paper-bg: #161918;
-  --stack-bg: #1e2321;
-  --stack-hover-bg: #262c29;
-  --ink-color: #e3e6e4;
-  --ink-muted: #8f9994;
-  --rule-color: #2d3431;
-  --accent-color: #7db1c4;
-  --accent-hover: #9ec8d7;
-  --mark-bg: #3a3420;
-
-  --main-bg: var(--paper-bg);
-  --body-bg: var(--paper-bg);
-  --body-bg-color: var(--paper-bg);
-  --main-border-color: var(--rule-color);
-  --border-color: var(--rule-color);
-  --heading-color: var(--ink-color);
-  --text-color: var(--ink-color);
-  --text-muted-color: var(--ink-muted);
-  --label-color: var(--ink-muted);
-  --link-color: var(--accent-color);
-  --link-hover-color: var(--accent-hover);
-  --link-underline-color: var(--rule-color);
-
-  --site-title-color: var(--ink-color);
-  --site-subtitle-color: var(--ink-muted);
-  --sidebar-bg: var(--stack-bg);
-  --sidebar-border-color: var(--rule-color);
-  --sidebar-muted-color: var(--ink-muted);
-  --sidebar-active-color: var(--ink-color);
-  --sidebar-hover-bg: var(--stack-hover-bg);
-  --sidebar-btn-bg: transparent;
-  --sidebar-btn-color: var(--ink-muted);
-  --avatar-border-color: var(--rule-color);
-
-  --topbar-bg: rgba(22, 25, 24, 0.92);
-  --topbar-text-color: var(--ink-muted);
-  --search-border-color: var(--rule-color);
-  --search-icon-color: var(--ink-muted);
-  --input-focus-border-color: var(--accent-color);
-
-  --card-bg: var(--paper-bg);
-  --card-header-bg: var(--stack-bg);
-  --card-hover-bg: var(--stack-bg);
-  --card-border-color: var(--rule-color);
-  --card-shadow: none;
-  --shadow: none;
-
-  --button-bg: var(--stack-bg);
-  --btn-bg: var(--stack-bg);
-  --btn-hover-bg: var(--stack-hover-bg);
-  --btn-border-color: var(--rule-color);
-  --btn-backtotop-bg: var(--stack-bg);
-  --btn-backtotop-color: var(--ink-muted);
-  --btn-backtotop-border-color: var(--rule-color);
-  --btn-patinator-text-color: var(--ink-muted);
-  --btn-paginator-hover-color: var(--stack-bg);
-  --btn-share-color: var(--ink-muted);
-  --btn-share-hover-color: var(--accent-color);
-
-  --toc-highlight: var(--accent-color);
-  --toc-popup-border-color: var(--rule-color);
-  --blockquote-border-color: var(--accent-color);
-  --blockquote-text-color: var(--ink-muted);
-  --highlight-bg: var(--mark-bg);
-  --highlight-bg-color: var(--stack-bg);
-  --code-bg: var(--stack-bg);
-  --inline-code-bg: var(--stack-bg);
-  --code-color: var(--ink-color);
-  --table-header-bg: var(--stack-bg);
-  --tb-odd-bg: var(--paper-bg);
-  --tb-even-bg: var(--stack-bg);
-  --tb-border-color: var(--rule-color);
-
-  --tag-border: var(--rule-color);
-  --tag-shadow: transparent;
-  --tag-hover: var(--stack-bg);
-  --search-tag-bg: var(--stack-bg);
-  --categories-border: var(--rule-color);
-  --categories-hover-bg: var(--stack-bg);
-  --timeline-color: var(--rule-color);
-  --timeline-node-bg: var(--accent-color);
-  --footnote-target-bg: var(--mark-bg);
-  --post-list-text-color: var(--ink-muted);
+/* 显式锁定手动切换模式对应的 color-scheme */
+:root[data-bs-theme="light"],
+html[data-mode="light"],
+[data-theme="light"] {
+  color-scheme: light;
 }
 
 :root[data-bs-theme="dark"],
 html[data-mode="dark"],
 [data-theme="dark"] {
-  @include dark-tokens;
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-bs-theme="light"]):not([data-mode="light"]):not([data-theme="light"]) {
-    @include dark-tokens;
+/* 现代浏览器（Chrome 123+ / Firefox 120+ / Safari 17.5+）使用 light-dark() 自动解析 */
+@supports (color: light-dark(white, black)) {
+  :root {
+    --paper-bg: light-dark(var(--paper-bg-light), var(--paper-bg-dark));
+    --stack-bg: light-dark(var(--stack-bg-light), var(--stack-bg-dark));
+    --stack-hover-bg: light-dark(var(--stack-hover-bg-light), var(--stack-hover-bg-dark));
+    --ink-color: light-dark(var(--ink-color-light), var(--ink-color-dark));
+    --ink-muted: light-dark(var(--ink-muted-light), var(--ink-muted-dark));
+    --rule-color: light-dark(var(--rule-color-light), var(--rule-color-dark));
+    --accent-color: light-dark(var(--accent-color-light), var(--accent-color-dark));
+    --accent-hover: light-dark(var(--accent-hover-light), var(--accent-hover-dark));
+    --mark-bg: light-dark(var(--mark-bg-light), var(--mark-bg-dark));
+    --topbar-bg-fallback: light-dark(var(--topbar-bg-light), var(--topbar-bg-dark));
   }
 }
 
-/* ---- 2. 全局基础与无障碍 ---- */
+/* 旧浏览器降级：通过 prefers-color-scheme 与主题属性切换核心色板 */
+@mixin dark-palette-fallback {
+  --paper-bg: var(--paper-bg-dark);
+  --stack-bg: var(--stack-bg-dark);
+  --stack-hover-bg: var(--stack-hover-bg-dark);
+  --ink-color: var(--ink-color-dark);
+  --ink-muted: var(--ink-muted-dark);
+  --rule-color: var(--rule-color-dark);
+  --accent-color: var(--accent-color-dark);
+  --accent-hover: var(--accent-hover-dark);
+  --mark-bg: var(--mark-bg-dark);
+  --topbar-bg-fallback: var(--topbar-bg-dark);
+}
+
+@supports not (color: light-dark(white, black)) {
+  :root[data-bs-theme="dark"],
+  html[data-mode="dark"],
+  [data-theme="dark"] {
+    @include dark-palette-fallback;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-bs-theme="light"]):not([data-mode="light"]):not([data-theme="light"]) {
+      @include dark-palette-fallback;
+    }
+  }
+}
+
+/* 统一覆盖 Chirpy 7.4 主题变量（单份声明覆盖自动/手动亮暗模式，消除重复） */
+:root,
+:root:not([data-mode]),
+:root[data-bs-theme="light"],
+:root[data-bs-theme="dark"],
+html[data-mode="light"],
+html[data-mode="dark"],
+[data-theme="light"],
+[data-theme="dark"] {
+  --main-bg: var(--paper-bg);
+  --body-bg: var(--paper-bg);
+  --body-bg-color: var(--paper-bg);
+  --main-border-color: var(--rule-color);
+  --border-color: var(--rule-color);
+  --heading-color: var(--ink-color);
+  --text-color: var(--ink-color);
+  --text-muted-color: var(--ink-muted);
+  --label-color: var(--ink-muted);
+  --link-color: var(--accent-color);
+  --link-hover-color: var(--accent-hover);
+  --link-underline-color: var(--rule-color);
+
+  --site-title-color: var(--ink-color);
+  --site-subtitle-color: var(--ink-muted);
+  --sidebar-bg: var(--stack-bg);
+  --sidebar-border-color: var(--rule-color);
+  --sidebar-muted-color: var(--ink-muted);
+  --sidebar-active-color: var(--ink-color);
+  --sidebar-hover-bg: var(--stack-hover-bg);
+  --sidebar-btn-bg: transparent;
+  --sidebar-btn-color: var(--ink-muted);
+  --avatar-border-color: var(--rule-color);
+
+  --topbar-bg: var(--topbar-bg-fallback);
+  --topbar-text-color: var(--ink-muted);
+  --search-border-color: var(--rule-color);
+  --search-icon-color: var(--ink-muted);
+  --input-focus-border-color: var(--accent-color);
+
+  --card-bg: var(--paper-bg);
+  --card-header-bg: var(--stack-bg);
+  --card-hover-bg: var(--stack-bg);
+  --card-border-color: var(--rule-color);
+  --card-shadow: none;
+  --shadow: none;
+
+  --button-bg: var(--stack-bg);
+  --btn-bg: var(--stack-bg);
+  --btn-hover-bg: var(--stack-hover-bg);
+  --btn-border-color: var(--rule-color);
+  --btn-backtotop-bg: var(--stack-bg);
+  --btn-backtotop-color: var(--ink-muted);
+  --btn-backtotop-border-color: var(--rule-color);
+  --btn-patinator-text-color: var(--ink-muted);
+  --btn-paginator-hover-color: var(--stack-bg);
+  --btn-share-color: var(--ink-muted);
+  --btn-share-hover-color: var(--accent-color);
+
+  --toc-highlight: var(--accent-color);
+  --toc-popup-border-color: var(--rule-color);
+  --blockquote-border-color: var(--accent-color);
+  --blockquote-text-color: var(--ink-muted);
+  --highlight-bg: var(--mark-bg);
+  --highlight-bg-color: var(--stack-bg);
+  --code-bg: var(--stack-bg);
+  --inline-code-bg: var(--stack-bg);
+  --code-color: var(--ink-color);
+  --table-header-bg: var(--stack-bg);
+  --tb-odd-bg: var(--paper-bg);
+  --tb-even-bg: var(--stack-bg);
+  --tb-border-color: var(--rule-color);
+
+  --tag-border: var(--rule-color);
+  --tag-shadow: transparent;
+  --tag-hover: var(--stack-bg);
+  --search-tag-bg: var(--stack-bg);
+  --categories-border: var(--rule-color);
+  --categories-hover-bg: var(--stack-bg);
+  --timeline-color: var(--rule-color);
+  --timeline-node-bg: var(--accent-color);
+  --footnote-target-bg: var(--mark-bg);
+  --post-list-text-color: var(--ink-muted);
+}
+
+/* 现代浏览器直接用 color-mix(in oklab) 从 --paper-bg 派生半透明顶栏背景 */
+@supports (color: color-mix(in oklab, white 92%, transparent)) {
+  :root,
+  :root:not([data-mode]),
+  :root[data-bs-theme="light"],
+  :root[data-bs-theme="dark"],
+  html[data-mode="light"],
+  html[data-mode="dark"],
+  [data-theme="light"],
+  [data-theme="dark"] {
+    --topbar-bg: color-mix(in oklab, var(--paper-bg) 92%, transparent);
+  }
+}
+
+/* 高对比度偏好：强化控件与分隔线对比度 */
+@media (prefers-contrast: more) {
+  :root,
+  :root[data-bs-theme="dark"],
+  html[data-mode="dark"],
+  [data-theme="dark"] {
+    --rule-color: var(--ink-muted);
+  }
+}
+
+/* ---- 2. 全局基础、无障碍与跨文档视图过渡 ---- */
+
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
 
 html {
   background-color: var(--paper-bg);
@@ -222,11 +246,9 @@ body {
   background-color: var(--paper-bg);
   color: var(--ink-color);
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.75;
   overflow-x: clip;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 a:focus-visible,
@@ -240,6 +262,20 @@ input:focus-visible {
 ::selection {
   background: var(--mark-bg);
   color: var(--ink-color);
+}
+
+@media (forced-colors: active) {
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible {
+    outline: 2px solid Highlight;
+  }
+
+  #search,
+  #back-to-top,
+  .home-entry__catalog {
+    border: 1px solid CanvasText;
+  }
 }
 
 /* ---- 3. 侧栏（书脊）与顶栏 ---- */
@@ -356,6 +392,7 @@ article:has(.home-entry) > h1:first-child {
 }
 
 .home-entry {
+  container-type: inline-size;
   width: 100%;
   min-width: 0;
   max-width: 44rem;
@@ -376,10 +413,11 @@ article:has(.home-entry) > h1:first-child {
   &__title {
     margin: 0 0 1rem;
     font-family: var(--font-serif);
-    font-size: clamp(1.9rem, 3.6vw, 2.5rem);
+    font-size: clamp(1.75rem, 1.15rem + 2.2vw, 2.5rem);
     font-weight: 600;
     letter-spacing: 0.04em;
     line-height: 1.3;
+    text-wrap: balance;
     color: var(--ink-color);
   }
 
@@ -389,6 +427,7 @@ article:has(.home-entry) > h1:first-child {
     color: var(--ink-muted);
     font-size: 1rem;
     line-height: 1.85;
+    text-wrap: pretty;
   }
 
   /* 4.2 唯一视觉焦点：馆藏精选索书卡 */
@@ -426,9 +465,10 @@ article:has(.home-entry) > h1:first-child {
   &__catalog-title {
     margin: 0 0 0.65rem;
     font-family: var(--font-serif);
-    font-size: clamp(1.3rem, 2.6vw, 1.6rem);
+    font-size: clamp(1.25rem, 0.95rem + 1.2vw, 1.6rem);
     font-weight: 600;
     line-height: 1.45;
+    text-wrap: balance;
 
     a {
       color: var(--ink-color);
@@ -446,6 +486,7 @@ article:has(.home-entry) > h1:first-child {
     color: var(--ink-muted);
     font-size: 0.94rem;
     line-height: 1.8;
+    text-wrap: pretty;
   }
 
   &__catalog-foot {
@@ -460,13 +501,15 @@ article:has(.home-entry) > h1:first-child {
     color: var(--accent-color);
     font-size: 0.9rem;
     font-weight: 600;
-    border-bottom: 1px solid var(--accent-color) !important;
-    padding-bottom: 0.1rem;
-    transition: color 0.18s ease, border-color 0.18s ease;
+    text-decoration: underline;
+    text-decoration-color: var(--accent-color);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.24em;
+    transition: color 0.18s ease, text-decoration-color 0.18s ease;
 
     &:hover {
       color: var(--accent-hover);
-      border-bottom-color: var(--accent-hover) !important;
+      text-decoration-color: var(--accent-hover);
     }
   }
 
@@ -482,6 +525,7 @@ article:has(.home-entry) > h1:first-child {
     font-size: 1.15rem;
     font-weight: 600;
     letter-spacing: 0.04em;
+    text-wrap: balance;
     color: var(--ink-color);
   }
 
@@ -578,10 +622,9 @@ article:has(.home-entry) > h1:first-child {
     align-items: baseline;
     gap: 0.25rem 1.25rem;
     padding: 1.05rem 0;
-    border-bottom: 1px solid var(--rule-color);
 
-    &:last-child {
-      border-bottom: none;
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--rule-color);
     }
   }
 
@@ -603,6 +646,7 @@ article:has(.home-entry) > h1:first-child {
     line-height: 1.5;
     color: var(--ink-color);
     overflow-wrap: anywhere;
+    text-wrap: balance;
     transition: color 0.18s ease;
 
     &:hover {
@@ -615,6 +659,7 @@ article:has(.home-entry) > h1:first-child {
     color: var(--ink-muted);
     font-size: 0.86rem;
     line-height: 1.7;
+    text-wrap: pretty;
   }
 
   &__toc-cat {
@@ -634,13 +679,15 @@ article:has(.home-entry) > h1:first-child {
     a {
       color: var(--accent-color);
       font-weight: 500;
-      padding-bottom: 0.08rem;
-      border-bottom: 1px solid var(--accent-color) !important;
-      transition: border-color 0.18s ease, color 0.18s ease;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-color);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.24em;
+      transition: text-decoration-color 0.18s ease, color 0.18s ease;
 
       &:hover {
         color: var(--accent-hover);
-        border-bottom-color: var(--accent-hover) !important;
+        text-decoration-color: var(--accent-hover);
       }
     }
   }
@@ -655,12 +702,14 @@ article:has(.home-entry) > h1:first-child {
   letter-spacing: 0.02em;
   line-height: 1.4;
   font-weight: 600;
+  text-wrap: balance;
 }
 
 #main-wrapper main article header .post-desc {
   color: var(--ink-muted);
   font-size: 1rem;
   line-height: 1.75;
+  text-wrap: pretty;
 }
 
 .post-meta {
@@ -678,6 +727,7 @@ article:has(.home-entry) > h1:first-child {
 
   p {
     margin-bottom: 1.45em;
+    text-wrap: pretty;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -688,6 +738,7 @@ article:has(.home-entry) > h1:first-child {
     margin-top: 2.4rem;
     margin-bottom: 0.85rem;
     line-height: 1.4;
+    text-wrap: balance;
   }
 
   h2 {
@@ -720,6 +771,7 @@ article:has(.home-entry) > h1:first-child {
     margin: 1.75rem 0;
     color: var(--ink-muted);
     font-style: normal;
+    text-wrap: pretty;
 
     p:last-child {
       margin-bottom: 0;
@@ -728,13 +780,16 @@ article:has(.home-entry) > h1:first-child {
 
   a:not(.img-link) {
     color: var(--accent-color);
-    text-decoration: none;
-    border-bottom: 1px solid var(--rule-color);
-    transition: color 0.18s ease, border-color 0.18s ease;
+    border-bottom: none;
+    text-decoration: underline;
+    text-decoration-color: var(--rule-color);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.24em;
+    transition: color 0.18s ease, text-decoration-color 0.18s ease;
 
     &:hover {
       color: var(--accent-hover);
-      border-bottom-color: var(--accent-hover);
+      text-decoration-color: var(--accent-hover);
     }
   }
 
@@ -919,12 +974,17 @@ footer,
   }
 }
 
-/* ---- 9. 响应式与减弱动态偏好 ---- */
+/* ---- 9. 长列表首屏外延迟渲染与组件级响应式（@container） ---- */
 
-@media (max-width: 768px) {
+/* 仅对首屏之外的列表项启用 content-visibility，配合相对单位占位防止滚动条跳动 */
+#post-list .card-wrapper:nth-child(n+4),
+#archives ul li:nth-child(n+12) {
+  content-visibility: auto;
+  contain-intrinsic-block-size: auto 6rem;
+}
+
+@container (max-width: 38rem) {
   .home-entry {
-    margin-top: 0.25rem;
-
     &__lead {
       padding-bottom: 1.75rem;
     }
@@ -963,18 +1023,15 @@ footer,
       grid-row: 2;
     }
   }
+}
+
+@media (max-width: 768px) {
+  .home-entry {
+    margin-top: 0.25rem;
+  }
 
   #main-wrapper main article .content:not(:has(.home-entry)) {
     font-size: 1rem;
     line-height: 1.85;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
   }
 }

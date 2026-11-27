@@ -1,0 +1,26 @@
+<!-- Theme color-scheme, referrer baseline, and OS text-scale opt-in -->
+<meta name="color-scheme" content="light dark">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="text-scale" content="scale">
+
+<!-- Progressive enhancement: prefetch same-origin pages on pointer hover/intent -->
+<script type="speculationrules">
+  {
+    "prefetch": [
+      {
+        "tag": "blog-nav-prefetch",
+        "where": {
+          "and": [
+            { "href_matches": "/*" },
+            { "not": { "href_matches": "/feed.xml" } },
+            { "not": { "href_matches": "/sitemap.xml" } },
+            { "not": { "href_matches": "/robots.txt" } },
+            { "not": { "selector_matches": "[rel~=nofollow]" } },
+            { "not": { "selector_matches": "[download]" } }
+          ]
+        },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+</script>

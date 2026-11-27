@@ -4,7 +4,7 @@ title: 线上书房
 ---
 
 <div class="home-entry">
-  <header class="home-entry__lead" aria-labelledby="home-title">
+  <header class="home-entry__lead">
     <h1 id="home-title" class="home-entry__title">慢读，认真想。</h1>
     <p class="home-entry__summary">
       记录读书笔记、注意力与数字生活，也收集教育、健康和日常里值得留下的发现。
@@ -12,7 +12,7 @@ title: 线上书房
     </p>
   </header>
 
-  <section class="home-entry__catalog" aria-labelledby="home-featured-title">
+  <section class="home-entry__catalog">
     <div class="home-entry__catalog-head">
       <span class="home-entry__catalog-label">馆藏精选</span>
       <time class="home-entry__catalog-date" datetime="2026-01-01">2026-01-01</time>
@@ -24,12 +24,14 @@ title: 线上书房
       十本书，以及这一年阅读方式和体验的变化：关于工作、投资、时间与认知，也关于阅读带来的喜悦。
     </p>
     <div class="home-entry__catalog-foot">
-      <a class="home-entry__catalog-link" href="{{ '/posts/reading-list-2025/' | relative_url }}">阅读全文</a>
+      <a class="home-entry__catalog-link" href="{{ '/posts/reading-list-2025/' | relative_url }}">
+        阅读全文<span class="visually-hidden">：我的年度读书总结（2025）</span>
+      </a>
       <span class="home-entry__catalog-meta">年度书单</span>
     </div>
   </section>
 
-  <section class="home-entry__shelves" aria-labelledby="home-shelves-title">
+  <section class="home-entry__shelves">
     <h2 id="home-shelves-title" class="home-entry__section-title">主题书架</h2>
     <nav class="home-entry__shelf-grid" aria-label="按主题浏览">
       <a class="home-entry__shelf-item" href="{{ '/categories/读书/' | relative_url }}">
@@ -56,12 +58,12 @@ title: 线上书房
     </nav>
   </section>
 
-  <section class="home-entry__recent" aria-labelledby="home-recent-title">
+  <section class="home-entry__recent">
     <div class="home-entry__section-bar">
       <h2 id="home-recent-title" class="home-entry__section-title">近期笔记</h2>
       <a class="home-entry__archive-link" href="{{ '/archives/' | relative_url }}">全部归档</a>
     </div>
-    <ol class="home-entry__toc">
+    <ol class="home-entry__toc" role="list">
       {% assign recent_count = 0 %}
       {% for post in site.posts %}
       {% if post.url contains 'reading-list-2025' %}{% continue %}{% endif %}
